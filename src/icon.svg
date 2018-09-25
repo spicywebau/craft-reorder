@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="600px" height="600px" viewBox="0 0 600 600" enable-background="new 0 0 600 600" xml:space="preserve">
+<g id="Layer_1">
+	<circle fill="#F94133" cx="300" cy="300" r="300"/>
+</g>
+<g id="Layer_2">
+	<path fill="#FFFFFF" stroke="#000000" stroke-width="20" d="M406.7,420.074c0,6.627-5.373,12-12,12H167c-6.627,0-12-5.373-12-12
+		V131.149c0-6.627,5.373-12,12-12h227.7c6.627,0,12,5.373,12,12V420.074z"/>
+</g>
+<g id="Layer_3">
+	<path fill="#FFFFFF" stroke="#000000" stroke-width="20" d="M446.7,460.074c0,6.627-5.373,12-12,12H207c-6.627,0-12-5.373-12-12
+		V171.149c0-6.627,5.373-12,12-12h227.7c6.627,0,12,5.373,12,12V460.074z"/>
+	<line fill="none" stroke="#000000" stroke-width="20" stroke-linecap="square" x1="246.388" y1="315.768" x2="395.674" y2="315.768"/>
+	<line fill="none" stroke="#000000" stroke-width="20" stroke-linecap="square" x1="246.388" y1="264.768" x2="395.674" y2="264.768"/>
+	<line fill="none" stroke="#000000" stroke-width="20" stroke-linecap="square" x1="246.388" y1="213.768" x2="395.674" y2="213.768"/>
+	<line fill="none" stroke="#000000" stroke-width="20" stroke-linecap="square" x1="246.388" y1="366.768" x2="395.674" y2="366.768"/>
+	<line fill="none" stroke="#000000" stroke-width="20" stroke-linecap="square" x1="246.388" y1="417.768" x2="395.674" y2="417.768"/>
+</g>
+</svg>

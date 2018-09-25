@@ -1,0 +1,17 @@
+{% import '_includes/forms' as forms %}
+
+{{ forms.lightswitchField({
+	id: 'retainCart',
+	name: 'retainCart',
+	on: settings.retainCart,
+	label: 'Retain existing cart line items?'|t('reorder'),
+	instructions: 'Whether to keep or discard the existing cart line items when reordering another order.'|t('reorder'),
+}) }}
+
+{{ forms.lightswitchField({
+	id: 'allowPartial',
+	name: 'allowPartial',
+	on: settings.allowPartial,
+	label: 'Allow partial order recreation?'|t('reorder'),
+	instructions: 'Whether to allow reordering an order if not all of the associated purchasables are still available.'|t('reorder'),
+}) }}

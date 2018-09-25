@@ -1,0 +1,15 @@
+<?php
+namespace spicyweb\reorder\enums;
+
+/**
+ * Class OrderStatus
+ *
+ * @package spicyweb\reorder
+ * @author Spicy Web <craft@spicyweb.com.au>
+ * @since 1.0.0
+ */
+abstract class OrderStatus
+{
+	const DoesNotExist = 'The order does not exist';
+	const Partial = 'Some items are not available';
+}
