@@ -52,7 +52,7 @@ class Service extends Component
 					$purchasable->id,
 					$item->options,
 					$qty,
-					$item->note
+					$item->note ?? ''
 				);
 
 				// If the item had insufficient stock but was already in the cart, its quantity will now exceed the
@@ -139,7 +139,7 @@ class Service extends Component
 					$purchasable->id,
 					$lineItem->options,
 					$qty,
-					$lineItem->note
+					$lineItem->note ?? ''
 				);
 
 				// Only count the cart item quantity if the item has an ID (and is therefore actually in the cart).
