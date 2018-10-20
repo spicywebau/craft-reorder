@@ -122,7 +122,7 @@ class Service extends Component
 			return LineItemStatus::Deleted;
 		}
 
-		if ($purchasable instanceof Element && $purchasable->getStatus() !== Element::STATUS_ENABLED)
+		if ($purchasable instanceof Element && ($purchasable->getStatus() !== Element::STATUS_ENABLED && $purchasable->getStatus() !== Element::SCENARIO_LIVE))
 		{
 			return LineItemStatus::Disabled;
 		}
