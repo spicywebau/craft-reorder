@@ -1,7 +1,7 @@
 {
   "name": "spicyweb/craft-reorder",
   "description": "Easy reordering of previous Craft Commerce user orders",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "craft-plugin",
   "keywords": [
     "craftcms",
