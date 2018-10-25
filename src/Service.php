@@ -31,7 +31,7 @@ class Service extends Component
 	public function copyLineItems(Order $order, bool $allowPartial = false): bool
 	{
 		$commerce = Commerce::getInstance();
-		$cart = $commerce->getCarts()->getCart();
+		$cart = $commerce->getCarts()->getCart(true);
 
 		foreach ($order->lineItems as $item)
 		{
