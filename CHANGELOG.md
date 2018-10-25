@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.2 - 2018-10-25
+### Fixed
+- Ensure cart has been saved (and therefore has an ID) before attempting to resolve cart line items; fixes error in newer Craft Commerce 2 beta releases
+
 ## 1.0.1 - 2018-10-20
 ### Fixed
 - Fixed error when a line item's note is null (thanks @engram-design)
