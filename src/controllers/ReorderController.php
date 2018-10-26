@@ -47,6 +47,11 @@ class ReorderController extends Controller
 			{
 				$cart = $commerce->getCarts()->getCart();
 
+                		// If there's no cart yet, force a new one to be generated
+                		if (!$cart->id && !$retainCart) {
+                    			$cart = $commerce->getCarts()->getCart(true);
+                		}
+
 				// The cart ID is used in the unavailable line items check to account for cart items' quantities when
 				// determining quantity-based availability.  If we don't want to retain the current cart, then we don't
 				// need to account for the cart and therefore don't need to pass the cart ID.
