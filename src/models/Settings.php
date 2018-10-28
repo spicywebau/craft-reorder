@@ -6,7 +6,7 @@ use craft\base\Model;
 /**
  * Class Settings
  *
- * @package spicyweb\reorder
+ * @package spicyweb\reorder\models
  * @author Spicy Web <craft@spicyweb.com.au>
  * @since 1.0.0
  */
