@@ -31,7 +31,12 @@ class Service extends Component
 	public function copyLineItems(Order $order, bool $allowPartial = false): bool
 	{
 		$commerce = Commerce::getInstance();
-		$cart = $commerce->getCarts()->getCart(true);
+
+		// Confirm there's at least one available line item to copy and, if so, force-save the cart to ensure it exists.
+		// It's unnecessary to account for any existing cart items for quantity-related unavailability, because if
+		// that's the case then clearly the cart exists and doesn't need to be force-saved.
+		$forceSaveCart = $this->hasAvailableLineItems($order);
+		$cart = $commerce->getCarts()->getCart($forceSaveCart);
 
 		foreach ($order->lineItems as $item)
 		{
@@ -73,7 +78,17 @@ class Service extends Component
 			}
 		}
 
-		return $cart->validate() && Craft::$app->getElements()->saveElement($cart, false);
+		// If the cart has items, validate and save.  This protects against the possibility of saving an empty cart,
+		// which could otherwise happen with a new cart if set to allow partial reorders and no order line items are
+		// available.
+		if (!$cart->getIsEmpty())
+		{
+			return $cart->validate() && Craft::$app->getElements()->saveElement($cart, false);
+		}
+
+		// If the cart was new and no order line items were available, then it can technically be said that we were
+		// successful in copying all the line items that were available to copy...
+		return true;
 	}
 
 	/**
@@ -103,6 +118,30 @@ class Service extends Component
 		}
 
 		return $unavailableLineItems;
+	}
+
+	/**
+	 * Checks whether an order has any available line items.
+	 *
+	 * @param Order $order The order to check.
+	 * @param int $cartId A cart ID, to check for the quantity of items already in the user's cart.
+	 * @return bool Whether the order has any available line items.
+	 * @since 1.1.0
+	 */
+	public function hasAvailableLineItems(Order $order, int $cartId = null): bool
+	{
+		$available = false;
+
+		foreach ($order->lineItems as $item)
+		{
+			if ($this->_getLineItemStatus($item, $cartId) === LineItemStatus::Available)
+			{
+				$available = true;
+				break;
+			}
+		}
+
+		return $available;
 	}
 
 	/**
