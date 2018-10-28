@@ -11,7 +11,7 @@ use spicyweb\reorder\enums\OrderStatus;
 /**
  * Class ReorderController
  *
- * @package spicyweb\reorder
+ * @package spicyweb\reorder\controllers
  * @author Spicy Web <craft@spicyweb.com.au>
  * @since 1.0.0
  */
@@ -53,20 +53,34 @@ class ReorderController extends Controller
 				$cartId = $retainCart ? $cart->id : null;
 				$unavailableLineItems = ReOrder::$plugin->methods->getUnavailableLineItems($order, $cartId);
 
-				if (empty($unavailableLineItems) || $allowPartial)
-				{
-					if (!$retainCart)
-					{
-						$commerce->getLineItems()->deleteAllLineItemsByOrderId($cart->id);
-					}
+				// Don't account for a cart ID when checking for any available items, as the `copyLineItems()` service
+				// method will adjust items' quantities in the case of quantity-based unavailability when allowing
+				// partial reorders.
+				$hasAvailableLineItems = ReOrder::$plugin->methods->hasAvailableLineItems($order);
 
-					$success = ReOrder::$plugin->methods->copyLineItems($order, $allowPartial);
+				if ($hasAvailableLineItems)
+				{
+					if (empty($unavailableLineItems) || $allowPartial)
+					{
+						// If the user has a cart and we don't want to retain its items, delete the items.
+						if (!$retainCart && $cart->id !== null)
+						{
+							$commerce->getLineItems()->deleteAllLineItemsByOrderId($cart->id);
+						}
+
+						$success = ReOrder::$plugin->methods->copyLineItems($order, $allowPartial);
+					}
+					else
+					{
+						// Not all purchasables are still available and partial order recreations are disabled, so we
+						// couldn't complete the reorder.
+						$error = OrderStatus::Partial;
+					}
 				}
 				else
 				{
-					// Not all purchasables are still available and partial order recreations are disabled, so we
-					// couldn't complete the reorder.
-					$error = OrderStatus::Partial;
+					// None of the order's purchasables are still available, so we couldn't complete the reorder.
+					$error = OrderStatus::NoItemsAvailable;
 				}
 			}
 			else
