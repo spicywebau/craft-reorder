@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.1 - 2018-11-04
+### Fixed
+- Updated usage of Craft Commerce `resolveLineItem()` method for changes made in Commerce 2.0.0-beta.13 regarding setting item quantities and notes
+
 ## 1.1.0 - 2018-10-28
 ### Added
 - Added `hasAvailableLineItems()` service method to check whether an order has any available line items
