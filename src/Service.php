@@ -55,10 +55,18 @@ class Service extends Component
 				$lineItem = $commerce->getLineItems()->resolveLineItem(
 					$cart->id,
 					$purchasable->id,
-					$item->options,
-					$qty,
-					$item->note ?? ''
+					$item->options
 				);
+				$lineItem->note = $item->note ?? '';
+
+				if ($lineItem->id !== null)
+				{
+					$lineItem->qty += $qty;
+				}
+				else
+				{
+					$lineItem->qty = $qty;
+				}
 
 				// If the item had insufficient stock but was already in the cart, its quantity will now exceed the
 				// available stock and will need to be reset to the available stock.
@@ -176,9 +184,7 @@ class Service extends Component
 				$cartItem = $commerce->getLineItems()->resolveLineItem(
 					$cartId,
 					$purchasable->id,
-					$lineItem->options,
-					$qty,
-					$lineItem->note ?? ''
+					$lineItem->options
 				);
 
 				// Only count the cart item quantity if the item has an ID (and is therefore actually in the cart).
