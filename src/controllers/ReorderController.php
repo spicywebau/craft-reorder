@@ -126,6 +126,8 @@ class ReorderController extends Controller
 			]);
 		}
 		
+		Craft::$app->getSession()->set('reorder.unavailable', $unavailableLineItems);
+		
 		return $this->redirectToPostedUrl();
 	}
 }
