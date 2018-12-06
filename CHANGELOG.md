@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.2 - 2018-12-06
+### Added
+- Now sets `reorder.unavailable` session variable, for accessing unavailable line items in templates, when redirecting after form submit (thanks @engram-design)
+
 ## 1.1.1 - 2018-11-04
 ### Fixed
 - Updated usage of Craft Commerce `resolveLineItem()` method for changes made in Commerce 2.0.0-beta.13 regarding setting item quantities and notes
