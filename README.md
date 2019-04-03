@@ -1,4 +1,4 @@
-<img src="docs/icon.png" width="60">
+<img src="docs/icon.png" width="100">
 
 # ReOrder
 
