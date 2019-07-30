@@ -26,9 +26,10 @@ class Service extends Component
 	 *
 	 * @param Order $order The order from which the line items will be copied.
 	 * @param bool $allowPartial Whether to allow partially available items, e.g. if there's insufficient stock.
+	 * @param array|null $itemIds The IDs of the items to copy, or `null` if copying all items.
 	 * @return bool Whether the line items were successfully copied.
 	 */
-	public function copyLineItems(Order $order, bool $allowPartial = false): bool
+	public function copyLineItems(Order $order, bool $allowPartial = false, array $itemIds = null): bool
 	{
 		$commerce = Commerce::getInstance();
 
@@ -40,6 +41,12 @@ class Service extends Component
 
 		foreach ($order->lineItems as $item)
 		{
+			// If only copying certain items, make sure this is one of them.
+			if ($itemIds !== null && !in_array($item->id, $itemIds))
+			{
+				continue;
+			}
+
 			$itemStatus = $this->_getLineItemStatus($item, $cart->id);
 			$itemAvailable = $itemStatus === LineItemStatus::Available;
 			$itemInsufficientStock = $itemStatus === LineItemStatus::InsufficientStock;
@@ -104,14 +111,21 @@ class Service extends Component
 	 *
 	 * @param Order $order The order to check.
 	 * @param int $cartId A cart ID, to check for the quantity of items already in the user's cart.
-	 * return array The line items that are unavailable and why.
+	 * @param array|null $itemIds The IDs of the items to check, or `null` if checking all items.
+	 * @return array The line items that are unavailable and why.
 	 */
-	public function getUnavailableLineItems(Order $order, int $cartId = null): array
+	public function getUnavailableLineItems(Order $order, int $cartId = null, array $itemIds = null): array
 	{
 		$unavailableLineItems = [];
 
 		foreach ($order->lineItems as $item)
 		{
+			// If only checking certain items, make sure this is one of them.
+			if ($itemIds !== null && !in_array($item->id, $itemIds))
+			{
+				continue;
+			}
+
 			$itemStatus = $this->_getLineItemStatus($item, $cartId);
 
 			if ($itemStatus !== LineItemStatus::Available)
@@ -133,15 +147,22 @@ class Service extends Component
 	 *
 	 * @param Order $order The order to check.
 	 * @param int $cartId A cart ID, to check for the quantity of items already in the user's cart.
+	 * @param array|null $itemIds The IDs of the items to check, or `null` if checking all items.
 	 * @return bool Whether the order has any available line items.
 	 * @since 1.1.0
 	 */
-	public function hasAvailableLineItems(Order $order, int $cartId = null): bool
+	public function hasAvailableLineItems(Order $order, int $cartId = null, array $itemIds = null): bool
 	{
 		$available = false;
 
 		foreach ($order->lineItems as $item)
 		{
+			// If only checking certain items, make sure this is one of them.
+			if ($itemIds !== null && !in_array($item->id, $itemIds))
+			{
+				continue;
+			}
+
 			if ($this->_getLineItemStatus($item, $cartId) === LineItemStatus::Available)
 			{
 				$available = true;

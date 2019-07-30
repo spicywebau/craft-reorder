@@ -29,6 +29,7 @@ class ReorderController extends Controller
 		$orderNumber = $request->getRequiredBodyParam('order');
 		$retainCart = $request->getBodyParam('retainCart', $defaultSettings->retainCart);
 		$allowPartial = $request->getBodyParam('allowPartial', $defaultSettings->allowPartial);
+		$copyItems = $request->getBodyParam('reOrderItems');
 
 		$isAjaxRequest = $request->getIsAjax();
 		$commerce = Commerce::getInstance();
@@ -51,12 +52,12 @@ class ReorderController extends Controller
 				// determining quantity-based availability.  If we don't want to retain the current cart, then we don't
 				// need to account for the cart and therefore don't need to pass the cart ID.
 				$cartId = $retainCart ? $cart->id : null;
-				$unavailableLineItems = ReOrder::$plugin->methods->getUnavailableLineItems($order, $cartId);
+				$unavailableLineItems = ReOrder::$plugin->methods->getUnavailableLineItems($order, $cartId, $copyItems);
 
 				// Don't account for a cart ID when checking for any available items, as the `copyLineItems()` service
 				// method will adjust items' quantities in the case of quantity-based unavailability when allowing
 				// partial reorders.
-				$hasAvailableLineItems = ReOrder::$plugin->methods->hasAvailableLineItems($order);
+				$hasAvailableLineItems = ReOrder::$plugin->methods->hasAvailableLineItems($order, null, $copyItems);
 
 				if ($hasAvailableLineItems)
 				{
@@ -68,7 +69,7 @@ class ReorderController extends Controller
 							$commerce->getLineItems()->deleteAllLineItemsByOrderId($cart->id);
 						}
 
-						$success = ReOrder::$plugin->methods->copyLineItems($order, $allowPartial);
+						$success = ReOrder::$plugin->methods->copyLineItems($order, $allowPartial, $copyItems);
 					}
 					else
 					{
