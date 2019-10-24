@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.1.3 - 2019-07-30
+
+### Added
+- Add ability to only reorder certain items - thanks @ttempleton
+- New Icon
+- Add issue template
+
+## 1.1.2 - 2018-12-06
+### Added
+- Now sets `reorder.unavailable` session variable, for accessing unavailable line items in templates, when redirecting after form submit (thanks @engram-design)
+
 ## 1.1.2 - 2018-12-06
 ### Added
 - Now sets `reorder.unavailable` session variable, for accessing unavailable line items in templates, when redirecting after form submit (thanks @engram-design)
