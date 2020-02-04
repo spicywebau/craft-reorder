@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+### Changed
+- update requirement for commerce 3
+
 ## 1.1.3 - 2019-07-30
 
 ### Added
