@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 1.1.4 - 2020-02-7
 
 ### Changed
 - update requirement for commerce 3
