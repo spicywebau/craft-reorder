@@ -5,7 +5,7 @@
 ### Fixed
 - Fixed an issue where reorders could fail at the point of comparing the current user's ID with the order customer's user ID, if one of them was set as a string instead of an integer
 
-## 1.1.4 - 2020-02-7
+## 1.1.4 - 2020-02-07
 
 ### Changed
 - update requirement for commerce 3
