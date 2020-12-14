@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 1.1.5 - 2020-12-14
 
 ### Fixed
 - Fixed an issue where reorders could fail at the point of comparing the current user's ID with the order customer's user ID, if one of them was set as a string instead of an integer
