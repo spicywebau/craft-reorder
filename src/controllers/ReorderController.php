@@ -44,7 +44,7 @@ class ReorderController extends Controller
 			$currentUser = Craft::$app->getUser();
 			$customer = $order->getCustomer();
 
-			if ($customer !== null && $currentUser->id === $customer->userId)
+			if ($customer !== null && (int)$currentUser->id === (int)$customer->userId)
 			{
 				$cart = $commerce->getCarts()->getCart();
 
