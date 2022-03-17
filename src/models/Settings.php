@@ -15,12 +15,12 @@ class Settings extends Model
 	/**
 	 * @var bool
 	 */
-	public $retainCart = true;
+	public bool $retainCart = true;
 
 	/**
 	 * @var bool
 	 */
-	public $allowPartial = false;
+	public bool $allowPartial = false;
 
 	/**
 	 * @inheritdoc

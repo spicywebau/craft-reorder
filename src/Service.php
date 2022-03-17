@@ -29,7 +29,7 @@ class Service extends Component
 	 * @param array|null $itemIds The IDs of the items to copy, or `null` if copying all items.
 	 * @return bool Whether the line items were successfully copied.
 	 */
-	public function copyLineItems(Order $order, bool $allowPartial = false, array $itemIds = null): bool
+	public function copyLineItems(Order $order, bool $allowPartial = false, ?array $itemIds = null): bool
 	{
 		$commerce = Commerce::getInstance();
 
@@ -114,7 +114,7 @@ class Service extends Component
 	 * @param array|null $itemIds The IDs of the items to check, or `null` if checking all items.
 	 * @return array The line items that are unavailable and why.
 	 */
-	public function getUnavailableLineItems(Order $order, ?Order $cart = null, array $itemIds = null): array
+	public function getUnavailableLineItems(Order $order, ?Order $cart = null, ?array $itemIds = null): array
 	{
 		$unavailableLineItems = [];
 
@@ -151,7 +151,7 @@ class Service extends Component
 	 * @return bool Whether the order has any available line items.
 	 * @since 1.1.0
 	 */
-	public function hasAvailableLineItems(Order $order, int $cartId = null, array $itemIds = null): bool
+	public function hasAvailableLineItems(Order $order, int $cartId = null, ?array $itemIds = null): bool
 	{
 		$available = false;
 

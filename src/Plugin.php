@@ -4,6 +4,7 @@ namespace spicyweb\reorder;
 use yii\base\Event;
 
 use Craft;
+use craft\base\Model;
 use craft\base\Plugin as BasePlugin;
 use craft\web\twig\variables\CraftVariable;
 
@@ -19,9 +20,9 @@ use spicyweb\reorder\models\Settings;
 class Plugin extends BasePlugin
 {
 	/**
-	 * @var Plugin
+	 * @var Plugin|null
 	 */
-	public static $plugin;
+	public static ?Plugin $plugin;
 
 	/**
 	 * @inheritdoc
@@ -31,7 +32,7 @@ class Plugin extends BasePlugin
 	/**
 	 * @inheritdoc
 	 */
-	public function init()
+	public function init(): void
 	{
 		parent::init();
 
@@ -50,7 +51,7 @@ class Plugin extends BasePlugin
 	/**
 	 * @inheritdoc
 	 */
-	protected function createSettingsModel(): ?\craft\base\Model
+	protected function createSettingsModel(): ?Model
 	{
 		return new Settings();
 	}

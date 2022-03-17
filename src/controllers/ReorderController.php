@@ -7,6 +7,7 @@ use craft\commerce\Plugin as Commerce;
 
 use spicyweb\reorder\Plugin as ReOrder;
 use spicyweb\reorder\enums\OrderStatus;
+use yii\web\Response;
 
 /**
  * Class ReorderController
@@ -19,8 +20,10 @@ class ReorderController extends Controller
 {
 	/**
 	 * Recreates a user's previous order's line items in their current cart.
+	 *
+	 * @return Response
 	 */
-	public function actionIndex()
+	public function actionIndex(): Response
 	{
 		$this->requirePostRequest();
 
