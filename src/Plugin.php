@@ -26,7 +26,7 @@ class Plugin extends BasePlugin
 	/**
 	 * @inheritdoc
 	 */
-	public $hasCpSettings = true;
+	public bool $hasCpSettings = true;
 
 	/**
 	 * @inheritdoc
@@ -50,7 +50,7 @@ class Plugin extends BasePlugin
 	/**
 	 * @inheritdoc
 	 */
-	protected function createSettingsModel(): Settings
+	protected function createSettingsModel(): ?\craft\base\Model
 	{
 		return new Settings();
 	}
@@ -58,7 +58,7 @@ class Plugin extends BasePlugin
 	/**
 	 * @inheritdoc
 	 */
-	protected function settingsHtml(): string
+	protected function settingsHtml(): ?string
 	{
 		return Craft::$app->getView()->renderTemplate('reorder/settings', [
 			'settings' => $this->getSettings(),
