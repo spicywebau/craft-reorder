@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### Added
+- Added Craft 4 compatibility (requires Craft 4.0.0-beta.2 or later)
+- Added Craft Commerce 4 compatibility (requires Craft Commerce 4.0.0-beta.1 or later)
+
 ## 1.1.5 - 2020-12-14
 
 ### Fixed
