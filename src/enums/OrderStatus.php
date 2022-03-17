@@ -10,7 +10,7 @@ namespace spicyweb\reorder\enums;
  */
 abstract class OrderStatus
 {
-	const DoesNotExist = 'The order does not exist';
-	const Partial = 'Some items are not available';
-	const NoItemsAvailable = 'No items available';
+	public const DoesNotExist = 'The order does not exist';
+	public const Partial = 'Some items are not available';
+	public const NoItemsAvailable = 'No items available';
 }

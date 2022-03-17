@@ -10,11 +10,11 @@ namespace spicyweb\reorder\enums;
  */
 abstract class LineItemStatus
 {
-	const Available = 'Available';
-	const Deleted = 'Deleted';
-	const Disabled = 'Disabled';
-	const BelowMinQty = 'BelowMinQty';
-	const AboveMaxQty = 'AboveMaxQty';
-	const InsufficientStock = 'InsufficientStock';
-	const OutOfStock = 'OutOfStock';
+	public const Available = 'Available';
+	public const Deleted = 'Deleted';
+	public const Disabled = 'Disabled';
+	public const BelowMinQty = 'BelowMinQty';
+	public const AboveMaxQty = 'AboveMaxQty';
+	public const InsufficientStock = 'InsufficientStock';
+	public const OutOfStock = 'OutOfStock';
 }
