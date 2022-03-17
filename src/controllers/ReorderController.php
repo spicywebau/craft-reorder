@@ -13,7 +13,7 @@ use yii\web\Response;
  * Class ReorderController
  *
  * @package spicyweb\reorder\controllers
- * @author Spicy Web <craft@spicyweb.com.au>
+ * @author Spicy Web <plugins@spicyweb.com.au>
  * @since 1.0.0
  */
 class ReorderController extends Controller

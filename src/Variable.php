@@ -9,7 +9,7 @@ use spicyweb\reorder\Plugin as ReOrder;
  * Class Variable
  *
  * @package spicyweb\reorder
- * @author Spicy Web <craft@spicyweb.com.au>
+ * @author Spicy Web <plugins@spicyweb.com.au>
  * @since 1.0.0
  */
 class Variable

@@ -14,7 +14,7 @@ use spicyweb\reorder\models\Settings;
  * Class Plugin
  *
  * @package spicyweb\reorder
- * @author Spicy Web <craft@spicyweb.com.au>
+ * @author Spicy Web <plugins@spicyweb.com.au>
  * @since 1.0.0
  */
 class Plugin extends BasePlugin

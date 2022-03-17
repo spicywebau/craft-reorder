@@ -16,7 +16,7 @@ use spicyweb\reorder\enums\LineItemStatus;
  * Class Service
  *
  * @package spicyweb\reorder
- * @author Spicy Web <craft@spicyweb.com.au>
+ * @author Spicy Web <plugins@spicyweb.com.au>
  * @since 1.0.0
  */
 class Service extends Component
