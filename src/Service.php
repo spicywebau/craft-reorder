@@ -146,12 +146,12 @@ class Service extends Component
 	 * Checks whether an order has any available line items.
 	 *
 	 * @param Order $order The order to check.
-	 * @param int $cartId A cart ID, to check for the quantity of items already in the user's cart.
+	 * @param Order|null $cart A cart, to check for the quantity of items already in the user's cart.
 	 * @param array|null $itemIds The IDs of the items to check, or `null` if checking all items.
 	 * @return bool Whether the order has any available line items.
 	 * @since 1.1.0
 	 */
-	public function hasAvailableLineItems(Order $order, int $cartId = null, ?array $itemIds = null): bool
+	public function hasAvailableLineItems(Order $order, ?Order $cart = null, ?array $itemIds = null): bool
 	{
 		$available = false;
 
@@ -163,7 +163,7 @@ class Service extends Component
 				continue;
 			}
 
-			if ($this->_getLineItemStatus($item, $cartId) === LineItemStatus::Available)
+			if ($this->_getLineItemStatus($item, $cart) === LineItemStatus::Available)
 			{
 				$available = true;
 				break;
