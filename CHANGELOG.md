@@ -1,10 +1,13 @@
 # Changelog
 
-## Unreleased
+## 2.0.0-beta.1 - 2022-03-17
 
 ### Added
 - Added Craft 4 compatibility (requires Craft 4.0.0-beta.2 or later)
 - Added Craft Commerce 4 compatibility (requires Craft Commerce 4.0.0-beta.1 or later)
+
+### Changed
+- Service methods that would previously take a cart/order ID as an argument now take a cart/order element instead
 
 ## 1.1.5 - 2020-12-14
 
