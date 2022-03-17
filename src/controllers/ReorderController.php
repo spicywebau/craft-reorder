@@ -44,15 +44,18 @@ class ReorderController extends Controller
 			$currentUser = Craft::$app->getUser();
 			$customer = $order->getCustomer();
 
-			if ($customer !== null && (int)$currentUser->id === (int)$customer->userId)
+			if ($customer !== null && (int)$currentUser->id === (int)$customer->id)
 			{
 				$cart = $commerce->getCarts()->getCart();
 
-				// The cart ID is used in the unavailable line items check to account for cart items' quantities when
-				// determining quantity-based availability.  If we don't want to retain the current cart, then we don't
-				// need to account for the cart and therefore don't need to pass the cart ID.
-				$cartId = $retainCart ? $cart->id : null;
-				$unavailableLineItems = ReOrder::$plugin->methods->getUnavailableLineItems($order, $cartId, $copyItems);
+				// The cart is used in the unavailable line items check to account for cart items' quantities when
+				// determining quantity-based availability. If we don't want to retain the current cart, then we don't
+				// need to account for the cart and therefore don't need to pass it.
+				$unavailableLineItems = ReOrder::$plugin->methods->getUnavailableLineItems(
+					$order,
+					$retainCart ? $cart : null,
+					$copyItems
+				);
 
 				// Don't account for a cart ID when checking for any available items, as the `copyLineItems()` service
 				// method will adjust items' quantities in the case of quantity-based unavailability when allowing

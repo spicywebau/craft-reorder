@@ -47,7 +47,7 @@ class Service extends Component
 				continue;
 			}
 
-			$itemStatus = $this->_getLineItemStatus($item, $cart->id);
+			$itemStatus = $this->_getLineItemStatus($item, $cart);
 			$itemAvailable = $itemStatus === LineItemStatus::Available;
 			$itemInsufficientStock = $itemStatus === LineItemStatus::InsufficientStock;
 			$itemAboveMaxQty = $itemStatus === LineItemStatus::AboveMaxQty;
@@ -60,7 +60,7 @@ class Service extends Component
 					($itemInsufficientStock ? $purchasable->stock : $item->qty);
 
 				$lineItem = $commerce->getLineItems()->resolveLineItem(
-					$cart->id,
+					$cart,
 					$purchasable->id,
 					$item->options
 				);
@@ -110,11 +110,11 @@ class Service extends Component
 	 * Checks an order's line items and returns the unavailable items along with why they're unavailable.
 	 *
 	 * @param Order $order The order to check.
-	 * @param int $cartId A cart ID, to check for the quantity of items already in the user's cart.
+	 * @param Order|null $cart A cart, to check for the quantity of items already in the user's cart.
 	 * @param array|null $itemIds The IDs of the items to check, or `null` if checking all items.
 	 * @return array The line items that are unavailable and why.
 	 */
-	public function getUnavailableLineItems(Order $order, int $cartId = null, array $itemIds = null): array
+	public function getUnavailableLineItems(Order $order, ?Order $cart = null, array $itemIds = null): array
 	{
 		$unavailableLineItems = [];
 
@@ -126,7 +126,7 @@ class Service extends Component
 				continue;
 			}
 
-			$itemStatus = $this->_getLineItemStatus($item, $cartId);
+			$itemStatus = $this->_getLineItemStatus($item, $cart);
 
 			if ($itemStatus !== LineItemStatus::Available)
 			{
@@ -177,10 +177,10 @@ class Service extends Component
 	 * Checks whether a line item's purchasable is available.
 	 *
 	 * @param LineItem $lineItem The line item to check.
-	 * @param int $cartId A cart ID, to check for the quantity of items already in the user's cart.
+	 * @param Order|null $cart A cart, to check for the quantity of items already in the user's cart.
 	 * @return string The line item status.
 	 */
-	private function _getLineItemStatus(LineItem $lineItem, int $cartId = null): string
+	private function _getLineItemStatus(LineItem $lineItem, ?Order $cart = null): string
 	{
 		$commerce = Commerce::getInstance();
 		$purchasable = $lineItem->getPurchasable();
@@ -200,10 +200,10 @@ class Service extends Component
 			$qty = $lineItem->qty;
 
 			// Make sure any item quantity checks take into account what's already in the user's cart.
-			if ($cartId !== null)
+			if ($cart !== null)
 			{
 				$cartItem = $commerce->getLineItems()->resolveLineItem(
-					$cartId,
+					$cart,
 					$purchasable->id,
 					$lineItem->options
 				);
@@ -218,12 +218,12 @@ class Service extends Component
 			$minQty = $purchasable->minQty;
 			$maxQty = $purchasable->maxQty;
 
-			if ($minQty !== null && $qty < $minQty)
+			if ($minQty && $qty < $minQty)
 			{
 				return LineItemStatus::BelowMinQty;
 			}
 
-			if ($maxQty !== null && $qty > $maxQty)
+			if ($maxQty && $qty > $maxQty)
 			{
 				return LineItemStatus::AboveMaxQty;
 			}
