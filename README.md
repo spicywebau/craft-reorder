@@ -33,29 +33,29 @@ ReOrder also makes it easy to allow a customer to select the items they want to 
 
 ```twig
 <form method="POST">
-	<input type="hidden" name="action" value="reorder/reorder">
-	{{ csrfInput() }}
-	{{ redirectInput('shop/checkout') }}
-	<input type="hidden" name="order" value="{{ order.number }}">
-	<input type="hidden" name="retainCart" value="1">
-	<input type="hidden" name="allowPartial" value="0">
-	<button type="submit">ReOrder!</button>
+    <input type="hidden" name="action" value="reorder/reorder">
+    {{ csrfInput() }}
+    {{ redirectInput('shop/checkout') }}
+    <input type="hidden" name="order" value="{{ order.number }}">
+    <input type="hidden" name="retainCart" value="1">
+    <input type="hidden" name="allowPartial" value="0">
+    <button type="submit">ReOrder!</button>
 </form>
 ```
 
 #### Example: allow customer to select which items to reorder
 ```twig
 <form method="POST">
-	<input type="hidden" name="action" value="reorder/reorder">
-	{{ csrfInput() }}
-	{{ redirectInput('shop/checkout') }}
-	<input type="hidden" name="order" value="{{ order.number }}">
+    <input type="hidden" name="action" value="reorder/reorder">
+    {{ csrfInput() }}
+    {{ redirectInput('shop/checkout') }}
+    <input type="hidden" name="order" value="{{ order.number }}">
 
-	{% for item in order.lineItems %}
-		<input type="checkbox" name="reOrderItems[]" value="{{ item.id }}">
-		{# other item info #}
-	{% endfor %}
+    {% for item in order.lineItems %}
+        <input type="checkbox" name="reOrderItems[]" value="{{ item.id }}">
+        {# other item info #}
+    {% endfor %}
 
-	<button type="submit">ReOrder!</button>
+    <button type="submit">ReOrder!</button>
 </form>
 ```
