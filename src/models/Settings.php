@@ -1,4 +1,5 @@
 <?php
+
 namespace spicyweb\reorder\models;
 
 use craft\base\Model;
@@ -12,23 +13,23 @@ use craft\base\Model;
  */
 class Settings extends Model
 {
-	/**
-	 * @var bool
-	 */
-	public bool $retainCart = true;
+    /**
+     * @var bool
+     */
+    public bool $retainCart = true;
 
-	/**
-	 * @var bool
-	 */
-	public bool $allowPartial = false;
+    /**
+     * @var bool
+     */
+    public bool $allowPartial = false;
 
-	/**
-	 * @inheritdoc
-	 */
-	public function rules(): array
-	{
-		return [
-			[['retainCart', 'allowPartial'], 'boolean'],
-		];
-	}
+    /**
+     * @inheritdoc
+     */
+    public function rules(): array
+    {
+        return [
+            [['retainCart', 'allowPartial'], 'boolean'],
+        ];
+    }
 }

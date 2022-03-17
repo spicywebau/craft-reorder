@@ -1,14 +1,15 @@
 <?php
+
 namespace spicyweb\reorder;
 
-use yii\base\Event;
-
 use Craft;
+
 use craft\base\Model;
 use craft\base\Plugin as BasePlugin;
 use craft\web\twig\variables\CraftVariable;
-
 use spicyweb\reorder\models\Settings;
+
+use yii\base\Event;
 
 /**
  * Class Plugin
@@ -19,50 +20,49 @@ use spicyweb\reorder\models\Settings;
  */
 class Plugin extends BasePlugin
 {
-	/**
-	 * @var Plugin|null
-	 */
-	public static ?Plugin $plugin;
+    /**
+     * @var Plugin|null
+     */
+    public static ?Plugin $plugin;
 
-	/**
-	 * @inheritdoc
-	 */
-	public bool $hasCpSettings = true;
+    /**
+     * @inheritdoc
+     */
+    public bool $hasCpSettings = true;
 
-	/**
-	 * @inheritdoc
-	 */
-	public function init(): void
-	{
-		parent::init();
+    /**
+     * @inheritdoc
+     */
+    public function init(): void
+    {
+        parent::init();
 
-		self::$plugin = $this;
+        self::$plugin = $this;
 
-		$this->setComponents([
-			'methods' => Service::class,
-		]);
+        $this->setComponents([
+            'methods' => Service::class,
+        ]);
 
-		Event::on(CraftVariable::class, CraftVariable::EVENT_INIT, function(Event $event)
-		{
-			$event->sender->set('reorder', Variable::class);
-		});
-	}
+        Event::on(CraftVariable::class, CraftVariable::EVENT_INIT, function(Event $event) {
+            $event->sender->set('reorder', Variable::class);
+        });
+    }
 
-	/**
-	 * @inheritdoc
-	 */
-	protected function createSettingsModel(): ?Model
-	{
-		return new Settings();
-	}
+    /**
+     * @inheritdoc
+     */
+    protected function createSettingsModel(): ?Model
+    {
+        return new Settings();
+    }
 
-	/**
-	 * @inheritdoc
-	 */
-	protected function settingsHtml(): ?string
-	{
-		return Craft::$app->getView()->renderTemplate('reorder/settings', [
-			'settings' => $this->getSettings(),
-		]);
-	}
+    /**
+     * @inheritdoc
+     */
+    protected function settingsHtml(): ?string
+    {
+        return Craft::$app->getView()->renderTemplate('reorder/settings', [
+            'settings' => $this->getSettings(),
+        ]);
+    }
 }
