@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+### Fixed
+- Fixed an error that occurred when using `craft.reorder.unavailableLineItems()`
+
 ## 2.0.0-beta.1 - 2022-03-17
 
 ### Added
