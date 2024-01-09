@@ -24,7 +24,7 @@ class ReorderController extends Controller
      *
      * @return Response
      */
-    public function actionIndex(): Response
+    public function actionIndex(): ?Response
     {
         $this->requirePostRequest();
 

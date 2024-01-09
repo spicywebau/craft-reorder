@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### Fixed
+
+- Fixed a `TypeError` that occurred if a non-AJAX reorder request failed
+
 ## 2.0.0 - 2022-05-04
 
 ### Added
