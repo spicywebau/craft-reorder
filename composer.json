@@ -1,7 +1,7 @@
 {
   "name": "spicyweb/craft-reorder",
   "description": "Easy reordering of previous Craft Commerce user orders",
-  "version": "2.0.1",
+  "version": "3.0.0-beta.1",
   "type": "craft-plugin",
   "keywords": [
     "craftcms",
@@ -11,8 +11,10 @@
   "license": "proprietary",
   "homepage": "https://spicyweb.com.au/",
   "support": {
-    "email": "craft@spicyweb.com.au",
-    "issues": "https://github.com/spicywebau/craft-reorder/issues"
+    "issues": "https://github.com/spicywebau/craft-reorder/issues",
+    "source": "https://github.com/spicywebau/craft-reorder",
+    "docs": "https://github.com/spicywebau/craft-reorder/blob/3.0.0-beta.1/README.md",
+    "rss": "https://github.com/spicywebau/craft-reorder/commits/3.x.atom"
   },
   "require": {
     "craftcms/cms": "^5.0.0",
@@ -29,8 +31,8 @@
     "class": "spicyweb\\reorder\\Plugin",
     "developer": "Spicy Web",
     "developerUrl": "https://spicyweb.com.au/",
-    "changelogUrl": "https://github.com/spicywebau/craft-reorder/blob/master/CHANGELOG.md",
-    "downloadUrl": "https://github.com/spicywebau/craft-reorder/archive/master.zip"
+    "changelogUrl": "https://github.com/spicywebau/craft-reorder/blob/3.x/CHANGELOG.md",
+    "downloadUrl": "https://github.com/spicywebau/craft-reorder/archive/refs/tags/3.0.0-beta.1.zip"
   },
   "config": {
     "allow-plugins": {

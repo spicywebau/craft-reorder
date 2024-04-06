@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 3.0.0-beta.1 - 2024-04-06
 
 ### Added
 - Added Craft 5 / Craft Commerce 5 compatibility
