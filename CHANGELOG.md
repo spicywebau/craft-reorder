@@ -1,5 +1,16 @@
 # Changelog
 
+## Unreleased
+
+### Added
+- Added Craft 5 / Craft Commerce 5 compatibility
+
+### Changed
+- `spicyweb\reorder\enums\LineItemStatus` and `spicyweb\reorder\enums\OrderStatus` are now proper enums, rather than abstract classes
+
+### Removed
+- Removed Craft 4 / Craft Commerce 4 compatibility
+
 ## 2.0.1 - 2024-01-09
 
 ### Fixed

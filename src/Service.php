@@ -166,7 +166,7 @@ class Service extends Component
      * @param Order|null $cart A cart, to check for the quantity of items already in the user's cart.
      * @return string The line item status.
      */
-    private function _getLineItemStatus(LineItem $lineItem, ?Order $cart = null): string
+    private function _getLineItemStatus(LineItem $lineItem, ?Order $cart = null): LineItemStatus
     {
         $commerce = Commerce::getInstance();
         $purchasable = $lineItem->getPurchasable();

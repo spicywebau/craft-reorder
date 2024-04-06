@@ -3,19 +3,19 @@
 namespace spicyweb\reorder\enums;
 
 /**
- * Class LineItemStatus
+ * Line item status enum
  *
  * @package spicyweb\reorder\enums
  * @author Spicy Web <plugins@spicyweb.com.au>
- * @since 1.0.0
+ * @since 3.0.0
  */
-abstract class LineItemStatus
+enum LineItemStatus
 {
-    public const Available = 'Available';
-    public const Deleted = 'Deleted';
-    public const Disabled = 'Disabled';
-    public const BelowMinQty = 'BelowMinQty';
-    public const AboveMaxQty = 'AboveMaxQty';
-    public const InsufficientStock = 'InsufficientStock';
-    public const OutOfStock = 'OutOfStock';
+    case Available;
+    case Deleted;
+    case Disabled;
+    case BelowMinQty;
+    case AboveMaxQty;
+    case InsufficientStock;
+    case OutOfStock;
 }

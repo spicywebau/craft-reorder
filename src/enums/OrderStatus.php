@@ -3,15 +3,15 @@
 namespace spicyweb\reorder\enums;
 
 /**
- * Class OrderStatus
+ * Order status enum
  *
  * @package spicyweb\reorder\enums
  * @author Spicy Web <plugins@spicyweb.com.au>
- * @since 1.0.0
+ * @since 3.0.0
  */
-abstract class OrderStatus
+enum OrderStatus: string
 {
-    public const DoesNotExist = 'The order does not exist';
-    public const Partial = 'Some items are not available';
-    public const NoItemsAvailable = 'No items available';
+    case DoesNotExist = 'The order does not exist';
+    case Partial = 'Some items are not available';
+    case NoItemsAvailable = 'No items available';
 }

@@ -8,8 +8,7 @@ ReOrder makes it easy to allow users to quickly replicate an old order's line it
 
 ## Requirements
 
-- Craft CMS 4.0.0 or later
-- Craft Commerce 4.0.0 or later
+- ReOrder 3.x requires Craft CMS 5 and Craft Commerce 5.
 
 ## Installation
 

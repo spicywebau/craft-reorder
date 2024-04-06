@@ -92,7 +92,7 @@ class ReorderController extends Controller
         }
 
         if ($error !== null) {
-            $translatedError = Craft::t('reorder', $error);
+            $translatedError = Craft::t('reorder', $error->value);
 
             if ($isAjaxRequest) {
                 return $this->asJson([
